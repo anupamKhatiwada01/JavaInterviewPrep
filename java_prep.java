@@ -1,51 +1,54 @@
- class Singleton {
-          private Integer id;
-          private Singleton(Integer id){
-              this.id = id;
-          }
+//  class Singleton {
+//           private Integer id;
+//           private Singleton(Integer id){
+//               this.id = id;
+//           }
 
-          private static Singleton object = null;
+//           private static Singleton object = null;
 
-          // pass in the id so that we can utilize it the first time
-          public static Singleton getInstance(Integer idToPass){
+//           // pass in the id so that we can utilize it the first time
+//           public static Singleton getInstance(Integer idToPass){
             
-              if(object==null) object =  new Singleton(idToPass);
-              return object; 
-          }
+//               if(object==null) object =  new Singleton(idToPass);
+//               return object; 
+//           }
 
-          public Integer getId(){
-              try{
-                  object.id = object.id + 10;
-                  return object.id;
-              }catch(Exception e){
-                  System.out.println("Object not created yet");
-                  return 0;
-              }
+//           public Integer getId(){
+//               try{
+//                   object.id = object.id + 10;
+//                   return object.id;
+//               }catch(Exception e){
+//                   System.out.println("Object not created yet");
+//                   return 0;
+//               }
               
-          }
+//           }
 
-      }
-
-
+//       }
 
 
 
-  public abstract class Athlete {
-    public abstract void walk();
-  }
 
-  public interface walkabe {
-    void walk();
-  }
+
+//   public abstract class Athlete {
+//     public abstract void walk();
+//   }
+
+//   public interface walkabe {
+//     void walk();
+//   }
 
 
 /*
 
-  abstract and final are illegal combinations because if a class is final it cannot be inherited from whereas abstract classes are incomplete classes tha meant to be inherited from to complete them.
+  abstract and final are illegal combinations because if a class is final it cannot be inherited 
+  from whereas abstract classes are incomplete classes tha meant to be inherited from to complete them.
 
 
 
-What is comparator? Suppose there's a array list of employees and we need to sort this list in ascending order of their bdays. We cant sort the employee list directly so we overide the compare function of the comparator interface.
+What is comparator? Suppose there's a array list of employees and we need to sort this list in ascending order
+of their bdays. We cant sort the employee list directly so we overide the compare function of the 
+comparator interface.
 
 
 Dependency management manages dependency versions themselves without the developer having to worry about them.
@@ -59,6 +62,37 @@ Dependency management manages dependency versions themselves without the develop
 
 
 
+// Extending the thread class
+// class java_prep implements Runnable{
+//     public void run(){
+//         System.out.println("Thread runs...");
+//     }
+//     public static void main(String[] args){
+//         Thread threadOne = new Thread(new java_prep());
+//         threadOne.start();
+//     }
+// }
+
+// class java_prep extends Thread{
+    // public void run(){
+        // System.out.println("Thread runs...");
+    // }
+    // public static void main(String[] args){
+        // java_prep threadOne = new java_prep();
+        // threadOne.start();
+    // }
+// }
+
+// Implementing the runnable interface
+// class NewClass implements runnable{
+//     public void run(){
+//         System.out.println("Thread runs...");
+//     }
+//     public static void main(String[] args){
+//         NewThread threadOne = new NewThread();
+//         NewThread.start();
+//     }
+// }
 
 
 
@@ -66,14 +100,13 @@ Dependency management manages dependency versions themselves without the develop
 
 
 
-
-class Main {
+// class Main {
   
-   public static void main(String args[]) {
-       Singleton sg = Singleton.getInstance(1);
-       System.out.println(sg.getId());
-   }
-}
+//    public static void main(String args[]) {
+//        Singleton sg = Singleton.getInstance(1);
+//        System.out.println(sg.getId());
+//    }
+// }
 
 /*
 
@@ -185,6 +218,210 @@ class Main {
       - Interfaces support multiple inheritance.
       - All properties are public.
       - 
+
+  30. Character array over string for storing sensetive information--> String literals in the string pool
+      are immutabe ie they cannot be changed so passwords and sensitive information even after changing will 
+      stay in the string pool and hackers can access it to via a memory dump.
+      Character arrays acan just be set to a null value after sensitive information is processed so we dont need
+      to worry about it staying around for malicious elements to find.
+
+  31. What do we get in the jdk file? JDK, JRE and JVM.
+      JDK - JRE, compiler, debugger and build tools.
+      JRE - Runtime environment provides libraries and classes for JVM to run thr program.
+      JVM - Interpreter which runs the java bytecode and converts it to machine readable instructions.
+
+  32. Differences between HashMap and HashTable in Java?
+        - Hashmap is not synchronized so it should not be used in threaded environments.
+        - Hashmap allows only one null key but any number of null values whereas Hashtable does not allow null keys
+        or values.
+        - Hashmap supports order of insertion by making use of its subclass linked hashmap whereas in hashtable
+        the order of insertion is not guaranteed.
+
+   33. What is reflection? Get back to this.
+   
+   34. What are the different ways of thread usage?
+
+      Extending the thread class
+      class NewThread extends Thread{
+          public void run(){
+              System.out.println("Thread runs...");
+          }
+          public static void main(String[] args){
+              NewThread threadOne = new NewThread();
+              threadOne.start();
+          }
+      }
+
+      Implementing the runnable interface
+      class NewClass implements runnable{
+          public void run(){
+              System.out.println("Thread runs...");
+          }
+          public static void main(String[] args){
+              NewThread threadOne = new NewThread();
+              NewThread.start();
+          }
+      }
+
+      Whatever is insode the run method will run in a new thread.
+
+    35. Different types of thread priorities in java? MIN_PRIORITY:Integer value 1
+                                                      MAX_PRIORITY:Integer value 10
+                                                      NORM_PRIORITY:Integer value 5
+                                                      
+                                                      
+    36. Difference between throw and throws.
+    
+    class Main {
+   public static int testExceptionDivide(int a, int b) throws ArithmeticException{ // Throws is used to inform the calling method to handle the expression.
+       if(a == 0 || b == 0)
+           throw new ArithmeticException(); // throw is used to throw a particular exception
+       return a/b;
+   }
+   public static void main(String args[]) {
+       try{
+           testExceptionDivide(10, 0);
+       }
+       catch(ArithmeticException e){
+           //Handle the exception
+       }
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+37. Final variable instantiations are possible inside the constructor and in this case 
+    their scope will be the whole class where as declaring a final variable inside
+    the scope of a method makes sure that the variable is available only inside the
+    scope of that method.
+
+
+
+
+
+
+    class Main {
+    public static void main(String args[]) {
+        Scaler s = new Scaler(5);
+    }
+}
+class InterviewBit{
+    InterviewBit(){
+        System.out.println(" Welcome to InterviewBit ");
+    }
+}
+class Scaler extends InterviewBit{
+    Scaler(){
+        System.out.println(" Welcome to Scaler Academy ");
+    }
+    Scaler(int x){
+        this();
+        super();
+        System.out.println(" Welcome to Scaler Academy 2");
+    }
+}
+
+The above program throws a compilation error as super() has to be the first function called within the block.
+If we interchange this() and super() again it'll throw a compilation error because the condition with this()
+is also that it should be the first function call of the block. Thus these two functions cannot be called within the 
+same block.
+
+
+38. Java works by pass by value or pass by reference?
+Pass by value.
+
+
+39. String or StringBuffer for lot of updates on the same data?
+    String buffer as it is mutable and string will just cause unnecessary additions to the string pool.
+
+40. "transient" keyword does not allow the serialization of attributes of a class in java.
+
+public class InterviewBitExample{
+    private transient String someInfo;
+    private String name;
+    private Integer id;
+}
+In the above example attributes except someInfo can be serialized.
+
+41. If static modifier is not added to main method? There will not be compilation error but JVM will not recognize
+    it as the main method to start execution from and throws "NoSuchMethodError" at runtime.
+
+42. Can we make main main() thread a daemon thread?
+    In java multithreading, the main() threads are always non-daemon threads. And there is no way we can change the
+    nature of a non-daemon thread to a daemon thread.
+
+43. What hapens if there are multiple main methods inside one class in java?
+    The program won't compile as it will state that the method has already been defined inside the class.
+
+44. Object cloning and how its achieved in java? Cloning is creating an exact copy of an object.
+    To support this the class has to implement the clonable interface from java.lang.package and override the clone()
+    method.
+
+    protected Object clone() throws CloneNotSupportedException{
+        return (Object)super.clone();
+    }
+
+    In case the Clonable Interface is not implemented and only the method is overridded then this results in 
+    the CloneNotSupportedException.
+
+
+45. How does exception propagate? Look for the first satisfying catch block, if not found propagate below to the
+    next function in the call stack to find a satifying catch block and keep propagating down until the program
+    is terminated in the main method.
+
+46. Not mandatory to have a catch block after try block. A try block should be followed by either a catch or a finally.
+    If the probabilty of throwing exception is high then the function should be declared using the throws clause.
+    This will make sure that it has to be called inside a try catch block.
+
+47. Code inside finally block will be called irrespective of any number of catch blocks even if something has been
+    returned. The only way finally block does not run is if System.exit() was called somewhere.
+
+48. Can a constructor be called inside another constructor?
+    Yes.
+
+    public class Sample{
+
+        private Integer id;
+
+        Sample(){
+            System.out.println("This is the default constructor");
+        }
+
+        Sample(Integer id){
+            this();
+            this.id = id;
+            System.out.println("This is the modified constructor which calls the default constructor.");
+        }
+    }
+
+
+49. Contigous memory locations are used to store the actual values in an array but not in ArrayList. Why?
+    ArrayList cannot be used to store primitives such as int, float etc. only thing stored are the references
+    to objects. So the contents ie. the objects are stored in the heap at different locations and just their
+    references are stored contigously in an arraylist.
+    As arrays store primitives such as float, int etc which are stored by value so their actual value is stored
+    at contigous memory locations by an array.
+
+50. Why are indexes stored from index=0?
+    This indexes are stored form start=0 because to find the address of a particular index in memory
+    the formula used base index+(index*size_of_variable_data_type). If index started from 1 we would have to do extra 
+    arithmetic to find actual address. So to remove this complexity indexes start from 0.
+
+
+51. How many overloaded add and addAll method are available in the list interface? Describe needs and uses.
+    
+
+
+
 
 
 
