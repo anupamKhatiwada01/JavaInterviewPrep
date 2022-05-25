@@ -419,6 +419,14 @@ In the above example attributes except someInfo can be serialized.
 
 51. How many overloaded add and addAll method are available in the list interface? Describe needs and uses.
     
+    addAll(Element e) // Adds elemet at the end of the list.
+    addAll(int index, Element e) // Inserts element e at index
+    addAll(Collection<extends?Element>c) // Add all elements of a collection to the end of a list
+    addAll(int index, Collection<extends?Element>c) // Inserts all elements of a collection at the index
+
+
+52. How does array list size grow dynamically?
+    It grows with the formula new_size = current_size+(current_size//2);
 
 
 
