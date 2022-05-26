@@ -429,7 +429,171 @@ In the above example attributes except someInfo can be serialized.
     It grows with the formula new_size = current_size+(current_size//2);
 
 
+Advanced questions:
 
+Although inheritance is a popular oops concept it is less advantages than composition. Explain.
+
+Composition allows for loose coupling whereas inheritance allows for tight coupling.
+As Java does not allow multiple inheritance composition allows a more flexible and better solution.
+Aids in unit testing.
+
+
+Eg. 
+
+package composition;
+public class Top{
+    public int start(){
+        return 0;
+    }
+}
+
+public class Bottom extends Top{
+    public int stop(){
+        return 0;
+    }
+}
+
+
+If we modify the Top class
+package composition;
+public class Top{
+    public int start(){
+        return 0;
+    }
+    public void stop(){
+
+    }
+}
+This will give compilation error.
+
+package composition;
+public class Bottom{
+    Top top = new Top();
+    void stop(){
+        this.top.start();
+        this.top.stop();
+        return 0;
+    }
+}
+
+>>  Bitwise right shift operator that maintains the signed bit.
+>>> Bitwise right shoft opearatot that does not maintain the signed bit and makes the most significant bit 0.
+
+Composition and aggregation:
+Composition:Tight coupling between objects and their attributes.
+Aggregation: Loose coupling between objects and their attributes acheived by passing the dependencies via the constructor.
+
+String created using new does not add the string object into the string pool and maintains it in the heap.
+String literals are stored in the string pool.
+
+
+How is the new operator different from the newInstance() operator in java?
+Both are used to create new objects. new is used to crete an object for which we know the class name whereas newInstance
+can be used to crete objects where classname is not known. Its invocation should be placed in a try catch block because
+if the class definition does not exist it will throw an Exception.
+
+
+Why is synchronization necessary?
+For maintaining consistancy. Same concept which utilizes mutexes.
+
+class InterviewBit{
+    int i;
+    static int j;
+    {
+        System.out.println(" Instance Block 1. Value of i = "+i);
+    }
+    static{
+        System.out.println(" Static Block 1. Value of j = "+j);
+        method_2();
+    }
+    {
+        i = 5;
+    }
+    static{
+        j = 10;
+    }
+    InterviewBit(){
+        System.out.println(" Welcome to InterviewBit ");
+    }
+    public static void main(String[] args){
+        InterviewBit ib = new InterviewBit();
+    }
+    public void method_1(){
+        System.out.println(" Instance method. ");
+    }
+    static{
+        System.out.println(" Static Block 2. Value of j = "+j);
+    }
+    {
+        System.out.println(" Instance Block 2. Value of i = "+i);
+        method_1();
+    }
+    public static void method_2(){
+        System.out.println(" Static method. ");
+    }
+}
+
+Flow of execution of java program
+
+Identification of Static Members from top to bottom.
+Execution of Static variable assignment and a Static block from top to bottom.
+Execution of the main method.
+Identification of Instance Members from top to bottom.
+Execution of Instance variable assignment and Instance block from top to bottom.
+Execution of Constructor.
+
+
+Define System.out.println: It is used to print messages on the console. System is s class present in java.lang.package.
+Out is a static variable of type PrintScreen class present in the System class. println() is a method of the PrintScreen class.
+
+
+Explain the java thread lifecycle.
+
+
+
+
+
+Assume thread has a lock on it. Will calling the sleep() method on the thread release the lock?
+A thread with a lock on it will not be released even after it calls sleep(). Despite the thread sleeping for a specified
+period of time the lock will not be released.
+
+
+What is a momory leak? Discuss some of its common causes?
+GC removes objects whose reference has been lost. memory leak happens when the unused variable references are not lost.
+Some causes of memory leak are:
+When there are unbounded caches.
+Excessive page swapping is done by the operating system.
+Improper written custom data structure.
+Inserting into a collection object without first deleting it.
+
+
+How can we set the spring bean scope? What supported scoped does it have?
+A scope can be set by the annotation @Scope or the "scope" attribute in an XML configuration file. It supports the following scopes.
+Singleton
+Prototype
+Request
+Session
+Global-session
+
+
+What is the best way of injecting dependencied? Also state the reason
+The best way of injecting dependency is with setters or through the constructor.
+Constructor is probably the best way way as it allows injection of non mutable dependencies.
+
+What are the possible ways of making objects eleigible for garbage collection in java?
+first approach: Set the variable to null.
+second approach: attach the variable reference to some other object in memory
+third approach: form a chain of variable references and if there is not link between them and outside it will be selected by the gc.
+                This is also called the island of isolation approach.
+
+
+                
+public class InterviewBit{
+   public static void main(String[] args)
+   {
+       System.out.println('b' + 'i' + 't'); // AS there are single quotes insted of double quotes it add the ascii values of the three letters
+   }
+}
 
 
 
